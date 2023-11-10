@@ -13,7 +13,11 @@ final class MealListViewModel: ObservableObject {
     @Published var desserts: [Dessert] = []
     private var cancellables: Set<AnyCancellable> = []
     
-    func fetchDessertList() {
+    init() {
+        fetchDessertList()
+    }
+    
+    private func fetchDessertList() {
         let dessertListEndpoint = "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert"
         
         NetworkManager.shared.fetchData(from: dessertListEndpoint, modelType: DessertList.self)
