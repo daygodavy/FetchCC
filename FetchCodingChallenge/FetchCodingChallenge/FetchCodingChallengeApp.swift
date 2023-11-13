@@ -11,7 +11,9 @@ import SwiftUI
 struct FetchCodingChallengeApp: App {
     var body: some Scene {
         WindowGroup {
-            MealListView(viewModel: MealListViewModel())
+            NavigationView {
+                MealListView(viewModel: MealListViewModel())
+            }
         }
     }
 }

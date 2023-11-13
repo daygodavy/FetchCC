@@ -34,7 +34,6 @@ struct DessertDetailResponse: Codable {
 struct DessertDetail: Codable {
     let id: String?
     let name: String?
-//    let drinkAlternate: String?
     let category: String?
     let placeOfOrigin: String?
     let instructions: String?
@@ -82,19 +81,68 @@ struct DessertDetail: Codable {
     let measure19: String?
     let measure20: String?
     let sourceLink: String?
-//    let strImageSource: String?
-//    let strCreativeCommonsConfirmed: String?
-//    let dateModified: String?
+    
+    var ingredients: [String] {
+        var ingredients: [String?] = []
+        
+        ingredients.append(ingredient1)
+        ingredients.append(ingredient2)
+        ingredients.append(ingredient3)
+        ingredients.append(ingredient4)
+        ingredients.append(ingredient5)
+        ingredients.append(ingredient6)
+        ingredients.append(ingredient7)
+        ingredients.append(ingredient8)
+        ingredients.append(ingredient9)
+        ingredients.append(ingredient10)
+        ingredients.append(ingredient11)
+        ingredients.append(ingredient12)
+        ingredients.append(ingredient13)
+        ingredients.append(ingredient14)
+        ingredients.append(ingredient15)
+        ingredients.append(ingredient16)
+        ingredients.append(ingredient17)
+        ingredients.append(ingredient18)
+        ingredients.append(ingredient19)
+        ingredients.append(ingredient20)
+        
+        return ingredients.compactMap { $0 }.filter { !$0.isEmpty }
+    }
+    
+    var measurements: [String] {
+        var measurements: [String?] = []
+        
+        measurements.append(measure1)
+        measurements.append(measure2)
+        measurements.append(measure3)
+        measurements.append(measure4)
+        measurements.append(measure5)
+        measurements.append(measure6)
+        measurements.append(measure7)
+        measurements.append(measure8)
+        measurements.append(measure9)
+        measurements.append(measure10)
+        measurements.append(measure11)
+        measurements.append(measure12)
+        measurements.append(measure13)
+        measurements.append(measure14)
+        measurements.append(measure15)
+        measurements.append(measure16)
+        measurements.append(measure17)
+        measurements.append(measure18)
+        measurements.append(measure19)
+        measurements.append(measure20)
+        
+        return measurements.compactMap { $0 }.filter { !$0.isEmpty }
+    }
     
     enum CodingKeys: String, CodingKey {
         case id = "idMeal"
         case name = "strMeal"
-//        case drinkAlternate = "strDrinkAlternate"
         case category = "strCategory"
         case placeOfOrigin = "strArea"
         case instructions = "strInstructions"
         case imageLink = "strMealThumb"
-//        case tags = "strTags"
         case youtubeLink = "strYoutube"
         case ingredient1 = "strIngredient1"
         case ingredient2 = "strIngredient2"

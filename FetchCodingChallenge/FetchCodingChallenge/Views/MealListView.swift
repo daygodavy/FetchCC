@@ -12,6 +12,8 @@ struct MealListView: View {
     @ObservedObject var viewModel: MealListViewModel
     let rowHeight: CGFloat = UIScreen.main.bounds.width * 0.50
     let cellWidth: CGFloat = UIScreen.main.bounds.width * 0.45
+    // Color.brown.brightness(-0.4)
+    // Color.brown.brightness(-0.55)
     
     var body: some View {
         ZStack {
@@ -34,9 +36,12 @@ struct MealListView: View {
                             ForEach(0..<2) { colIndex in
                                 let mealIndex = index + colIndex
                                 if mealIndex < viewModel.desserts.count {
-                                    MealItemView(meal: viewModel.desserts[mealIndex])
-                                        .frame(width: cellWidth, height: cellWidth)
-                                        .padding(.horizontal, 5)
+                                    let currentMeal = viewModel.desserts[mealIndex]
+                                    NavigationLink(destination: MealDetailView(viewModel: MealDetailViewModel(currentMeal.id))) {
+                                        MealItemView(meal: currentMeal)
+                                            .frame(width: cellWidth, height: cellWidth)
+                                            .padding(.horizontal, 5)
+                                    }
                                 }
                             }
                         }
@@ -59,7 +64,7 @@ struct MealListView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.bottom, 10)
         }
-        .background(Color.brown.brightness(-0.55))
+        .background(Color.brown.brightness(-0.50))
         .frame(maxWidth: .infinity, maxHeight: rowHeight * 0.50)
     }
     
@@ -78,7 +83,6 @@ struct MealItemView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: cellWidth, maxHeight: .infinity)
-                        .background(Color.purple)
                 } placeholder: {
                     ProgressView()
                 }
