@@ -17,6 +17,7 @@
 		5B33FFAC2AFEF4F0003E6219 /* MealDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33FFAB2AFEF4F0003E6219 /* MealDetailViewModel.swift */; };
 		5B33FFAE2B016B43003E6219 /* MealDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33FFAD2B016B43003E6219 /* MealDetailView.swift */; };
 		5B33FFB12B02C469003E6219 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33FFB02B02C469003E6219 /* Constants.swift */; };
+		5B33FFB52B02DA04003E6219 /* MealItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33FFB42B02DA04003E6219 /* MealItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		5B33FFAB2AFEF4F0003E6219 /* MealDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewModel.swift; sourceTree = "<group>"; };
 		5B33FFAD2B016B43003E6219 /* MealDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailView.swift; sourceTree = "<group>"; };
 		5B33FFB02B02C469003E6219 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5B33FFB42B02DA04003E6219 /* MealItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +113,9 @@
 		5B33FFAA2AFEF4BE003E6219 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5B33FFA82AFED10B003E6219 /* MealListView.swift */,
 				5B33FFAD2B016B43003E6219 /* MealDetailView.swift */,
+				5B33FFA82AFED10B003E6219 /* MealListView.swift */,
+				5B33FFB42B02DA04003E6219 /* MealItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				5B33FFA52AFEB66B003E6219 /* MealListViewModel.swift in Sources */,
 				5B33FFAE2B016B43003E6219 /* MealDetailView.swift in Sources */,
 				5B33FFAC2AFEF4F0003E6219 /* MealDetailViewModel.swift in Sources */,
+				5B33FFB52B02DA04003E6219 /* MealItemView.swift in Sources */,
 				5B33FFA92AFED10B003E6219 /* MealListView.swift in Sources */,
 				5B33FFB12B02C469003E6219 /* Constants.swift in Sources */,
 			);

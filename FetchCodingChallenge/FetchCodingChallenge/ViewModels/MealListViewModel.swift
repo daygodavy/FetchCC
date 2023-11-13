@@ -40,4 +40,13 @@ final class MealListViewModel: ObservableObject {
     deinit {
         cancellables.forEach { $0.cancel() }
     }
+    
+    func getDessert(at index: Int) -> Dessert? {
+        guard index < getDessertCount() else { return nil }
+        return desserts[index]
+    }
+    
+    func getDessertCount() -> Int {
+        return desserts.count
+    }
 }
