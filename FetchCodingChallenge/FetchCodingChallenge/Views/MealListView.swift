@@ -10,14 +10,12 @@ import SwiftUI
 struct MealListView: View {
     
     @ObservedObject var viewModel: MealListViewModel
-    let rowHeight: CGFloat = UIScreen.main.bounds.width * 0.50
-    let cellWidth: CGFloat = UIScreen.main.bounds.width * 0.45
-    // Color.brown.brightness(-0.4)
-    // Color.brown.brightness(-0.55)
+    let rowHeight: CGFloat = ScreenSize.width * 0.50
+    let cellWidth: CGFloat = ScreenSize.width * 0.45
     
     var body: some View {
         ZStack {
-            Color.brown.brightness(-0.4)
+            bgColor.brown40
             
             VStack(spacing: 1) {
                 headerView
@@ -64,7 +62,7 @@ struct MealListView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.bottom, 10)
         }
-        .background(Color.brown.brightness(-0.50))
+        .background(bgColor.brown50)
         .frame(maxWidth: .infinity, maxHeight: rowHeight * 0.50)
     }
     
@@ -73,7 +71,7 @@ struct MealListView: View {
 struct MealItemView: View {
     
     let meal: Dessert
-    let cellWidth: CGFloat = UIScreen.main.bounds.width * 0.45
+    let cellWidth: CGFloat = ScreenSize.width * 0.45
     
     var body: some View {
         ZStack(alignment: .top) { // Align the VStack to the bottom
@@ -94,17 +92,19 @@ struct MealItemView: View {
             VStack(alignment: .center, spacing: 5) {
                 Spacer() // Pushes the text to the bottom
                 Text(meal.name ?? "N/A")
+                    .padding(.horizontal, 5)
                     .font(.system(.subheadline, design: .rounded, weight: .semibold))
                     .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
                     .frame(width: cellWidth, height: cellWidth * 0.25)
-                    .background(Color.black.opacity(0.6))
+                    .background(bgColor.clearBlack90)
             }
+            .cornerRadius(10)
+            
         }
-//        .background(Color.brown)
         .cornerRadius(10)
         .shadow(radius: 5)
-        .frame(width: cellWidth, height: cellWidth + 20)
+        .frame(width: cellWidth, height: cellWidth + (cellWidth * 0.15))
     }
 }
 

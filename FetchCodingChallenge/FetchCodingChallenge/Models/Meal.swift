@@ -16,10 +16,6 @@ struct Dessert: Codable {
     let imageLink: String?
     let id: String?
     
-//    let imageUrl: URL = {
-//        
-//    }
-    
     enum CodingKeys: String, CodingKey {
         case name = "strMeal"
         case imageLink = "strMealThumb"
@@ -38,7 +34,6 @@ struct DessertDetail: Codable {
     let placeOfOrigin: String?
     let instructions: String?
     let imageLink: String?
-//    let tags: String?
     let youtubeLink: String?
     let ingredient1: String?
     let ingredient2: String?

@@ -47,7 +47,7 @@ final class MealDetailViewModel: ObservableObject {
     func getInstructions() -> String {
         guard let instructions = dessert?.instructions else { return "N/A"}
         
-        return instructions.replacingOccurrences(of: "\r\n", with: "\n\n")
+        return instructions.replacingOccurrences(of: "\r\n", with: "\n\n").replacingOccurrences(of: "\n\n\n", with: "\n\n")
     }
     
     func getIngredients() -> [String] {

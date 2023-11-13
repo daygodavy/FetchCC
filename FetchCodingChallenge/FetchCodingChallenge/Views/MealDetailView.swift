@@ -18,9 +18,9 @@ struct MealDetailView: View {
     
     @State private var selectedButton: ButtonType = .ingredients
 
-    let headerHeight: CGFloat = UIScreen.main.bounds.height * 0.46
-    let detailHeight: CGFloat = UIScreen.main.bounds.height * 0.58
-    let buttonWidth: CGFloat = UIScreen.main.bounds.width * 0.46
+    let headerHeight: CGFloat = ScreenSize.height * 0.46
+    let detailHeight: CGFloat = ScreenSize.height * 0.58
+    let buttonWidth: CGFloat = ScreenSize.width * 0.46
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -30,9 +30,8 @@ struct MealDetailView: View {
                     AsyncImage(url: imageUrl) { image in
                         image
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
+                            .aspectRatio(contentMode: .fill)
                             .frame(maxWidth: .infinity, maxHeight: headerHeight)
-                            .background(Color.purple)
                     } placeholder: {
                         ProgressView()
                     }
@@ -40,7 +39,6 @@ struct MealDetailView: View {
                 }
                 Spacer()
             }
-            .background(Color.green)
             
 
             VStack {
@@ -63,13 +61,12 @@ struct MealDetailView: View {
                             }
                             
                         }
-//                        .background(Color.brown.brightness(-0.10))
-                        .background(selectedButton == .ingredients ? Color.brown.brightness(-0.10) : Color.brown.brightness(-0.05))
+                        .background(selectedButton == .ingredients ? AnyView(bgColor.brown10) : AnyView(bgColor.brown5))
 
                     }
                     .frame(maxWidth: .infinity, maxHeight: detailHeight)
                 }
-                .background(Color.brown.brightness(-0.45))
+                .background(bgColor.brown45)
                 .clipShape(.rect(cornerRadius: 20))
             }
         }
@@ -85,7 +82,7 @@ struct MealDetailView: View {
                         .minimumScaleFactor(0.80)
                 }
                 .frame(maxWidth: .infinity, maxHeight: detailHeight * 0.10)
-                .background(Color.brown.brightness(-0.45))
+                .background(bgColor.brown45)
     }
     
     
@@ -100,13 +97,12 @@ struct MealDetailView: View {
                         .foregroundColor(selectedButton == .ingredients ? .white : .black)
                 }
                 .padding()
-//                .background(selectedButton == .ingredients ? Color.brown.brightness(-0.40) : Color.brown.brightness(-0.05))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             .frame(maxWidth: buttonWidth, maxHeight: detailHeight * 0.08, alignment: .center)
-            .background(selectedButton == .ingredients ? Color.brown.brightness(-0.35) : Color.brown.brightness(-0.05))
+            .background(selectedButton == .ingredients ? AnyView(bgColor.brown35) : AnyView(bgColor.brown5))
             .clipShape(.capsule)
-            .shadow(color: Color.black.opacity(0.05), radius: 2, x: 0, y: 5)
+            .shadow(color: bgColor.clearBlack5, radius: 2, x: 0, y: 5)
             .padding(.horizontal, 5)
             
             Spacer()
@@ -120,19 +116,18 @@ struct MealDetailView: View {
                         .foregroundColor(selectedButton == .instructions ? .white : .black)
                 }
                 .padding()
-//                .background(selectedButton == .instructions ? Color.brown.brightness(-0.40) : Color.brown.brightness(-0.05))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             .frame(maxWidth: buttonWidth, maxHeight: detailHeight * 0.08, alignment: .center)
-            .background(selectedButton == .instructions ? Color.brown.brightness(-0.35) : Color.brown.brightness(-0.05))
+            .background(selectedButton == .instructions ? AnyView(bgColor.brown35) : AnyView(bgColor.brown5))
             .clipShape(.capsule)
-            .shadow(color: Color.black.opacity(0.05), radius: 2, x: 0, y: 5)
+            .shadow(color: bgColor.clearBlack5, radius: 2, x: 0, y: 5)
             .padding(.horizontal, 5)
         }
         .frame(maxWidth: .infinity, maxHeight: detailHeight * 0.12, alignment: .center)
-        .background(Color.brown.brightness(-0.10))
+        .background(bgColor.brown10)
         .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
-        .shadow(color: Color.black.opacity(0.20), radius: 5, x: 0, y: 5)
+        .shadow(color: bgColor.clearBlack20, radius: 5, x: 0, y: 5)
         .padding(.horizontal, 5)
         .padding(.top, 5)
     }
@@ -148,7 +143,7 @@ struct MealDetailView: View {
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: detailHeight * 0.70)
-                .background(Color.brown.brightness(-0.05))
+                .background(bgColor.brown5)
     }
     
 }
@@ -163,17 +158,17 @@ struct BulletPointList: View {
                 Image(systemName: "circle.fill")
                     .foregroundColor(.secondary)
                 Text(items[index])
-                    .font(.system(.title3, design: .default, weight: .medium))
+                    .font(.system(.subheadline, design: .default, weight: .medium))
                 
                 Spacer()
                 
                 Text(measures[index])
-                    .font(.system(.title3, design: .default, weight: .medium))
+                    .font(.system(.subheadline, design: .default, weight: .medium))
             }
-            .listRowBackground(Color.brown.brightness(-0.05))
+            .listRowBackground(bgColor.brown5)
         }
         .scrollContentBackground(.hidden)
-        .background(Color.brown.brightness(-0.10))
+        .background(bgColor.brown10)
     }
 }
 
