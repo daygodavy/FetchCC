@@ -61,12 +61,12 @@ struct MealDetailView: View {
                             }
                             
                         }
-                        .background(selectedButton == .ingredients ? AnyView(bgColor.brown10) : AnyView(bgColor.brown5))
+                        .background(selectedButton == .ingredients ? AnyView(BgColor.brown10) : AnyView(BgColor.brown5))
 
                     }
                     .frame(maxWidth: .infinity, maxHeight: detailHeight)
                 }
-                .background(bgColor.brown45)
+                .background(BgColor.brown45)
                 .clipShape(.rect(cornerRadius: 20))
             }
         }
@@ -76,13 +76,13 @@ struct MealDetailView: View {
     var titleView: some View {
         return HStack(alignment: .top) {
                     Text("\(viewModel.getMealName())")
-                        .font(.system(.title, design: .rounded, weight: .heavy))
+                        .font(DetailFont.mealTitle)
                         .foregroundStyle(.orange)
                         .padding(.horizontal, 10)
                         .minimumScaleFactor(0.80)
                 }
                 .frame(maxWidth: .infinity, maxHeight: detailHeight * 0.10)
-                .background(bgColor.brown45)
+                .background(BgColor.brown45)
     }
     
     
@@ -92,17 +92,17 @@ struct MealDetailView: View {
                 Button(action: {
                     selectedButton = .ingredients
                 }) {
-                    Text("Ingredients")
-                        .font(.system(.title2, design: .default, weight: selectedButton == .ingredients ? .semibold : .medium))
+                    Text(LabelText.ingredients)
+                        .font(selectedButton == .ingredients ? DetailFont.selectedButton : DetailFont.unselectedButton)
                         .foregroundColor(selectedButton == .ingredients ? .white : .black)
                 }
                 .padding()
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             .frame(maxWidth: buttonWidth, maxHeight: detailHeight * 0.08, alignment: .center)
-            .background(selectedButton == .ingredients ? AnyView(bgColor.brown35) : AnyView(bgColor.brown5))
+            .background(selectedButton == .ingredients ? AnyView(BgColor.brown35) : AnyView(BgColor.brown5))
             .clipShape(.capsule)
-            .shadow(color: bgColor.clearBlack5, radius: 2, x: 0, y: 5)
+            .shadow(color: BgColor.clearBlack5, radius: 2, x: 0, y: 5)
             .padding(.horizontal, 5)
             
             Spacer()
@@ -111,23 +111,23 @@ struct MealDetailView: View {
                 Button(action: {
                     selectedButton = .instructions
                 }) {
-                    Text("Instructions")
-                        .font(.system(.title2, design: .default, weight: selectedButton == .instructions ? .semibold : .medium))
+                    Text(LabelText.instructions)
+                        .font(selectedButton == .instructions ? DetailFont.selectedButton : DetailFont.unselectedButton)
                         .foregroundColor(selectedButton == .instructions ? .white : .black)
                 }
                 .padding()
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             .frame(maxWidth: buttonWidth, maxHeight: detailHeight * 0.08, alignment: .center)
-            .background(selectedButton == .instructions ? AnyView(bgColor.brown35) : AnyView(bgColor.brown5))
+            .background(selectedButton == .instructions ? AnyView(BgColor.brown35) : AnyView(BgColor.brown5))
             .clipShape(.capsule)
-            .shadow(color: bgColor.clearBlack5, radius: 2, x: 0, y: 5)
+            .shadow(color: BgColor.clearBlack5, radius: 2, x: 0, y: 5)
             .padding(.horizontal, 5)
         }
         .frame(maxWidth: .infinity, maxHeight: detailHeight * 0.12, alignment: .center)
-        .background(bgColor.brown10)
+        .background(BgColor.brown10)
         .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
-        .shadow(color: bgColor.clearBlack20, radius: 5, x: 0, y: 5)
+        .shadow(color: BgColor.clearBlack20, radius: 5, x: 0, y: 5)
         .padding(.horizontal, 5)
         .padding(.top, 5)
     }
@@ -137,13 +137,13 @@ struct MealDetailView: View {
         return VStack {
                     ScrollView {
                         Text("\(viewModel.getInstructions())")
-                            .font(.system(.title3, design: .default, weight: .medium))
+                            .font(DetailFont.instructions)
                             .padding(.horizontal, 15)
                             .padding(.bottom, 15)
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: detailHeight * 0.70)
-                .background(bgColor.brown5)
+                .background(BgColor.brown5)
     }
     
 }
@@ -155,20 +155,20 @@ struct BulletPointList: View {
     var body: some View {
         List(0..<items.count, id: \.self) { index in
             HStack {
-                Image(systemName: "circle.fill")
+                SystemImage.circleFill
                     .foregroundColor(.secondary)
                 Text(items[index])
-                    .font(.system(.subheadline, design: .default, weight: .medium))
+                    .font(DetailFont.bulletList)
                 
                 Spacer()
-                
+
                 Text(measures[index])
-                    .font(.system(.subheadline, design: .default, weight: .medium))
+                    .font(DetailFont.bulletList)
             }
-            .listRowBackground(bgColor.brown5)
+            .listRowBackground(BgColor.brown5)
         }
         .scrollContentBackground(.hidden)
-        .background(bgColor.brown10)
+        .background(BgColor.brown10)
     }
 }
 

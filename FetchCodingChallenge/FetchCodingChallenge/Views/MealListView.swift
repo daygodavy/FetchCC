@@ -15,7 +15,7 @@ struct MealListView: View {
     
     var body: some View {
         ZStack {
-            bgColor.brown40
+            BgColor.brown40
             
             VStack(spacing: 1) {
                 headerView
@@ -55,14 +55,14 @@ struct MealListView: View {
     var headerView: some View {
         return VStack {
             Spacer()
-            Text("Desserts")
-                .font(.system(.title, design: .monospaced, weight: .bold))
+            Text(LabelText.listTitle)
+                .font(ListFont.listTitle)
                 .foregroundStyle(.orange)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity)
                 .padding(.bottom, 10)
         }
-        .background(bgColor.brown50)
+        .background(BgColor.brown50)
         .frame(maxWidth: .infinity, maxHeight: rowHeight * 0.50)
     }
     
@@ -93,11 +93,11 @@ struct MealItemView: View {
                 Spacer() // Pushes the text to the bottom
                 Text(meal.name ?? "N/A")
                     .padding(.horizontal, 5)
-                    .font(.system(.subheadline, design: .rounded, weight: .semibold))
+                    .font(ListFont.mealTitle)
                     .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
                     .frame(width: cellWidth, height: cellWidth * 0.25)
-                    .background(bgColor.clearBlack90)
+                    .background(BgColor.clearBlack90)
             }
             .cornerRadius(10)
             
