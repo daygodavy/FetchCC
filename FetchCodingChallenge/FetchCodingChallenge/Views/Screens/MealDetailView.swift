@@ -21,7 +21,7 @@ struct MealDetailView: View {
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
-                MealImageView(imageLinkStr: viewModel.dessert?.imageLink,
+                MealImageView(imageLinkStr: viewModel.getMealImageStr(),
                               cellWidth: .infinity,
                               cellHeight: headerHeight,
                               isCell: false)
@@ -38,7 +38,7 @@ struct MealDetailView: View {
     var titleView: some View {
         return HStack(alignment: .top) {
                     Text("\(viewModel.getMealName())")
-                        .font(DetailFont.mealTitle)
+                        .font(DetailFont.dessertTitle)
                         .foregroundStyle(.orange)
                         .padding(.horizontal, 10)
                         .minimumScaleFactor(0.80)
@@ -67,11 +67,9 @@ struct MealDetailView: View {
     func getSelectedView() -> AnyView {
         switch selectedButton {
         case .ingredients:
-            return AnyView(IngredientsView(items: viewModel.getIngredients(), 
-                                           measures: viewModel.getMeasurements()))
+            return AnyView(IngredientsView(items: viewModel.getIngredients(), measures: viewModel.getMeasurements()))
         case .instructions:
-            return AnyView(InstructionsView(instructions: viewModel.getInstructions(), 
-                                            height: detailHeight * 0.70))
+            return AnyView(InstructionsView(instructions: viewModel.getInstructions(), height: detailHeight * 0.70))
         }
     }
     

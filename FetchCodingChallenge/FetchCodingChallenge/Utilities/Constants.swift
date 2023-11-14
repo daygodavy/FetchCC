@@ -45,7 +45,7 @@ enum ListFont {
 }
 
 enum DetailFont {
-    static let mealTitle = Font.system(.title, design: .rounded, weight: .heavy)
+    static let dessertTitle = Font.system(.title, design: .rounded, weight: .heavy)
     static let selectedButton = Font.system(.title2, design: .default, weight: .semibold)
     static let unselectedButton = Font.system(.title2, design: .default, weight: .medium)
     static let instructions = Font.system(.title3, design: .default, weight: .medium)

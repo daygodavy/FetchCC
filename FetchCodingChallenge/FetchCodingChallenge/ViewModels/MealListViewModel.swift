@@ -9,31 +9,30 @@ import Foundation
 import Combine
 
 final class MealListViewModel: ObservableObject {
-    
-    @Published var desserts: [Dessert] = []
+    @Published private var meals: [Dessert] = []
     private let mealDbRepo = MealDbRepo()
     
     init() {
-        getDessertList()
+        getMealList()
     }
     
-    private func getDessertList() {
+    private func getMealList() {
         mealDbRepo.fetchDessertList { [weak self] result in
             switch result {
-            case .success(let desserts):
-                self?.desserts = desserts
+            case .success(let meals):
+                self?.meals = meals
             case .failure(let error):
                 print("Failed to fetch dessert list: \(error)")
             }
         }
     }
     
-    func getDessert(at index: Int) -> Dessert? {
-        guard index < getDessertCount() else { return nil }
-        return desserts[index]
+    func getMeal(at index: Int) -> Dessert? {
+        guard index < getMealCount() else { return nil }
+        return meals[index]
     }
     
-    func getDessertCount() -> Int {
-        return desserts.count
+    func getMealCount() -> Int {
+        return meals.count
     }
 }

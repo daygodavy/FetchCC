@@ -9,19 +9,18 @@ import Foundation
 import Combine
 
 final class MealDetailViewModel: ObservableObject {
-    
-    @Published var dessert: DessertDetail?
+    @Published private var meal: DessertDetail?
     let mealDbRepo = MealDbRepo()
     
     init(_ mealId: String?) {
-        getDessert(for: mealId)
+        getMealDetail(for: mealId)
     }
     
-    private func getDessert(for mealId: String?) {
+    private func getMealDetail(for mealId: String?) {
         mealDbRepo.fetchDessertDetail(for: mealId) { [weak self] result in
             switch result {
             case .success(let recipe):
-                self?.dessert = recipe
+                self?.meal = recipe
             case .failure(let error):
                 print("Failed to fetch dessert list: \(error)")
             }
@@ -29,22 +28,28 @@ final class MealDetailViewModel: ObservableObject {
     }
     
     func getMealName() -> String {
-        return dessert?.name ?? "N/A"
+        return meal?.name ?? "N/A"
     }
     
     func getInstructions() -> String {
-        guard let instructions = dessert?.instructions else { return "N/A"}
+        guard let instructions = meal?.instructions else { return "N/A"}
         
         return instructions.replacingOccurrences(of: "\r\n", with: "\n\n").replacingOccurrences(of: "\n\n\n", with: "\n\n")
     }
     
     func getIngredients() -> [String] {
-        guard let dessert = dessert else { return [] }
-        return dessert.ingredients
+        guard let meal = meal else { return [] }
+        return meal.ingredients
     }
     
     func getMeasurements() -> [String] {
-        guard let dessert = dessert else { return [] }
-        return dessert.measurements
+        guard let meal = meal else { return [] }
+        return meal.measurements
     }
+    
+    func getMealImageStr() -> String?  {
+        guard let meal = meal else { return nil }
+        return meal.imageLink
+    }
+    
 }

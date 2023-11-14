@@ -39,7 +39,7 @@ struct MealListView: View {
     
     private var collectionView: some View {
         return VStack(alignment: .leading, spacing: 10) {
-            ForEach(0..<viewModel.getDessertCount(), id: \.self) { index in
+            ForEach(0..<viewModel.getMealCount(), id: \.self) { index in
                 if index % 2 == 0 {
                     createRow(at: index)
                         .frame(height: rowHeight)
@@ -53,7 +53,7 @@ struct MealListView: View {
     private func createRow(at index: Int) -> some View {
         return HStack {
             ForEach(0..<2) { colIndex in
-                if let currentMeal = viewModel.getDessert(at: index + colIndex) {
+                if let currentMeal = viewModel.getMeal(at: index + colIndex) {
                     NavigationLink(destination: MealDetailView(viewModel: MealDetailViewModel(currentMeal.id))) {
                         MealItemCell(meal: currentMeal)
                             .frame(width: cellWidth, height: cellWidth)

@@ -75,8 +75,8 @@
 		5B33FF8D2AFDB711003E6219 /* FetchCodingChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				5B33FFAF2B02C459003E6219 /* Utilities */,
 				5B33FF8E2AFDB711003E6219 /* FetchCodingChallengeApp.swift */,
+				5B33FFAF2B02C459003E6219 /* Utilities */,
 				5B33FFA02AFDE0BA003E6219 /* Services */,
 				5B33FFAA2AFEF4BE003E6219 /* Views */,
 				5B33FFA32AFEB638003E6219 /* ViewModels */,
