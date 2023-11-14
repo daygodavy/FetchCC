@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MealListView: View {
-    
     @ObservedObject var viewModel: MealListViewModel
     private let rowHeight: CGFloat = ScreenSize.width * 0.50
     private let cellWidth: CGFloat = ScreenSize.width * 0.45
@@ -16,13 +15,9 @@ struct MealListView: View {
     var body: some View {
         ZStack {
             BgColor.brown40
-            
             VStack(spacing: 1) {
                 headerView
-                
-                ScrollView {
-                    collectionView
-                }
+                ScrollView { collectionView }
             }
         }
         .ignoresSafeArea()
