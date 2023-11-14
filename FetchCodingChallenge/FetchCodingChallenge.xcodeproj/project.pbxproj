@@ -18,6 +18,7 @@
 		5B33FFAE2B016B43003E6219 /* MealDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33FFAD2B016B43003E6219 /* MealDetailView.swift */; };
 		5B33FFB12B02C469003E6219 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33FFB02B02C469003E6219 /* Constants.swift */; };
 		5B33FFB52B02DA04003E6219 /* MealItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33FFB42B02DA04003E6219 /* MealItemView.swift */; };
+		5B33FFB92B02EA5D003E6219 /* MealDbRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33FFB82B02EA5D003E6219 /* MealDbRepo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		5B33FFAD2B016B43003E6219 /* MealDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailView.swift; sourceTree = "<group>"; };
 		5B33FFB02B02C469003E6219 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5B33FFB42B02DA04003E6219 /* MealItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealItemView.swift; sourceTree = "<group>"; };
+		5B33FFB82B02EA5D003E6219 /* MealDbRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDbRepo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				5B33FFA62AFEB804003E6219 /* NetworkManager.swift */,
+				5B33FFB82B02EA5D003E6219 /* MealDbRepo.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			files = (
 				5B33FF9F2AFDD5F4003E6219 /* Meal.swift in Sources */,
 				5B33FFA72AFEB804003E6219 /* NetworkManager.swift in Sources */,
+				5B33FFB92B02EA5D003E6219 /* MealDbRepo.swift in Sources */,
 				5B33FF8F2AFDB711003E6219 /* FetchCodingChallengeApp.swift in Sources */,
 				5B33FFA52AFEB66B003E6219 /* MealListViewModel.swift in Sources */,
 				5B33FFAE2B016B43003E6219 /* MealDetailView.swift in Sources */,

@@ -18,7 +18,7 @@ enum NetworkError: Error {
 
 class NetworkManager {
     
-    static let shared = NetworkManager()
+    private let baseURL = "https://themealdb.com/api/json/v1/1/"
     
     func fetchData<T: Decodable>(from endpoint: String, modelType: T.Type) -> AnyPublisher<T, Error> {
         guard let url = URL(string: endpoint) else {

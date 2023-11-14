@@ -11,34 +11,21 @@ import Combine
 final class MealListViewModel: ObservableObject {
     
     @Published var desserts: [Dessert] = []
-    private var cancellables: Set<AnyCancellable> = []
+    private let mealDbRepo = MealDbRepo()
     
     init() {
-        fetchDessertList()
+        getDessertList()
     }
     
-    private func fetchDessertList() {
-        let dessertListEndpoint = "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert"
-        
-        NetworkManager.shared.fetchData(from: dessertListEndpoint, modelType: DessertList.self)
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { [weak self] completion in
-                switch completion {
-                case .finished:
-                    // Update UI
-                    break
-                case .failure(let error):
-                    print("Failed to fetch dessert list: \(error)")
-                }
-    
-            }, receiveValue: { [weak self] dessertList in
-                self?.desserts = dessertList.meals
-            })
-            .store(in: &cancellables)
-    }
-    
-    deinit {
-        cancellables.forEach { $0.cancel() }
+    private func getDessertList() {
+        mealDbRepo.fetchDessertList { [weak self] result in
+            switch result {
+            case .success(let desserts):
+                self?.desserts = desserts
+            case .failure(let error):
+                print("Failed to fetch dessert list: \(error)")
+            }
+        }
     }
     
     func getDessert(at index: Int) -> Dessert? {

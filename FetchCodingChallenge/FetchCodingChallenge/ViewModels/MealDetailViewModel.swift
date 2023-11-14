@@ -11,33 +11,21 @@ import Combine
 final class MealDetailViewModel: ObservableObject {
     
     @Published var dessert: DessertDetail?
-    private var cancellables: Set<AnyCancellable> = []
+    let mealDbRepo = MealDbRepo()
     
     init(_ mealId: String?) {
-        fetchDessert(for: mealId)
+        getDessert(for: mealId)
     }
     
-    private func fetchDessert(for mealId: String?) {
-        guard let id = mealId else { return }
-        let dessertListEndpoint = "https://themealdb.com/api/json/v1/1/lookup.php?i=\(id)"
-        
-        NetworkManager.shared.fetchData(from: dessertListEndpoint, modelType: DessertDetailResponse.self)
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { [weak self] completion in
-                switch completion {
-                case .finished:
-                    // Update UI
-                    break
-                case .failure(let error):
-                    print("Failed to fetch dessert list: \(error)")
-                }
-    
-            }, receiveValue: { [weak self] dessertDetailResponse in
-                if let recipe = dessertDetailResponse.meals.first {
-                    self?.dessert = recipe
-                }
-            })
-            .store(in: &cancellables)
+    private func getDessert(for mealId: String?) {
+        mealDbRepo.fetchDessertDetail(for: mealId) { [weak self] result in
+            switch result {
+            case .success(let recipe):
+                self?.dessert = recipe
+            case .failure(let error):
+                print("Failed to fetch dessert list: \(error)")
+            }
+        }
     }
     
     func getMealName() -> String {
@@ -59,10 +47,4 @@ final class MealDetailViewModel: ObservableObject {
         guard let dessert = dessert else { return [] }
         return dessert.measurements
     }
-    
-    
-    deinit {
-        cancellables.forEach { $0.cancel() }
-    }
-    
 }
