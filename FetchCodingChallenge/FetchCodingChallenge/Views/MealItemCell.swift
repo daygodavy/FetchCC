@@ -1,32 +1,22 @@
 //
-//  MealItemView.swift
+//  MealItemCell.swift
 //  FetchCodingChallenge
 //
-//  Created by Davy Chuon on 11/13/23.
+//  Created by Davy Chuon on 11/14/23.
 //
 
 import SwiftUI
 
-struct MealItemView: View {
-    
+struct MealItemCell: View {
     let meal: Dessert
     let cellWidth: CGFloat = ScreenSize.width * 0.45
     
     var body: some View {
         ZStack(alignment: .top) { // Align the VStack to the bottom
-            if let validLink = meal.imageLink, let imageUrl = URL(string: validLink) {
-                AsyncImage(url: imageUrl) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: cellWidth, maxHeight: .infinity)
-                } placeholder: {
-                    ProgressView()
-                }
-                .frame(width: cellWidth, height: cellWidth)
-                .cornerRadius(10)
-                
-            }
+            MealImageView(imageLinkStr: meal.imageLink, 
+                          cellWidth: cellWidth,
+                          cellHeight: .infinity,
+                          isCell: true)
             
             VStack(alignment: .center, spacing: 5) {
                 Spacer() // Pushes the text to the bottom
@@ -48,5 +38,5 @@ struct MealItemView: View {
 }
 
 //#Preview {
-//    MealItemView(meal: MealListViewModel().desserts.first ?? <#default value#>)
+//    MealItemCell()
 //}

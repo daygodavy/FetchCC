@@ -60,7 +60,7 @@ struct MealListView: View {
             ForEach(0..<2) { colIndex in
                 if let currentMeal = viewModel.getDessert(at: index + colIndex) {
                     NavigationLink(destination: MealDetailView(viewModel: MealDetailViewModel(currentMeal.id))) {
-                        MealItemView(meal: currentMeal)
+                        MealItemCell(meal: currentMeal)
                             .frame(width: cellWidth, height: cellWidth)
                             .padding(.horizontal, 5)
                     }

@@ -15,7 +15,6 @@ enum ButtonType {
 struct MealDetailView: View {
     
     @ObservedObject var viewModel: MealDetailViewModel
-    
     @State private var selectedButton: ButtonType = .ingredients
 
     let headerHeight: CGFloat = ScreenSize.height * 0.46
@@ -24,23 +23,15 @@ struct MealDetailView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            
             VStack {
-                if let validLink = viewModel.dessert?.imageLink, let imageUrl = URL(string: validLink) {
-                    AsyncImage(url: imageUrl) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(maxWidth: .infinity, maxHeight: headerHeight)
-                    } placeholder: {
-                        ProgressView()
-                    }
-                    .cornerRadius(10)
-                }
+                MealImageView(imageLinkStr: viewModel.dessert?.imageLink,
+                              cellWidth: .infinity,
+                              cellHeight: headerHeight,
+                              isCell: false)
+                
                 Spacer()
             }
             
-
             VStack {
                 Spacer()
 
