@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Models for dessert list from TheMealDB
 struct DessertList: Codable {
     let meals: [Dessert]
 }
@@ -23,6 +24,7 @@ struct Dessert: Codable {
     }
 }
 
+// MARK: - Models for dessert details from TheMealDb
 struct DessertDetailResponse: Codable {
     let meals: [DessertDetail]
 }
@@ -30,8 +32,6 @@ struct DessertDetailResponse: Codable {
 struct DessertDetail: Codable {
     let id: String?
     let name: String?
-    let category: String?
-    let placeOfOrigin: String?
     let instructions: String?
     let imageLink: String?
     let youtubeLink: String?
@@ -75,8 +75,8 @@ struct DessertDetail: Codable {
     let measure18: String?
     let measure19: String?
     let measure20: String?
-    let sourceLink: String?
     
+    /// Filters empty/nil values and populates ingredients in a list
     var ingredients: [String] {
         var ingredients: [String?] = []
         
@@ -104,6 +104,7 @@ struct DessertDetail: Codable {
         return ingredients.compactMap { $0 }.filter { !$0.isEmpty }
     }
     
+    /// Filters empty/nil values and populates measurements in a list
     var measurements: [String] {
         var measurements: [String?] = []
         
@@ -134,8 +135,6 @@ struct DessertDetail: Codable {
     enum CodingKeys: String, CodingKey {
         case id = "idMeal"
         case name = "strMeal"
-        case category = "strCategory"
-        case placeOfOrigin = "strArea"
         case instructions = "strInstructions"
         case imageLink = "strMealThumb"
         case youtubeLink = "strYoutube"
@@ -179,6 +178,5 @@ struct DessertDetail: Codable {
         case measure18 = "strMeasure18"
         case measure19 = "strMeasure19"
         case measure20 = "strMeasure20"
-        case sourceLink = "strSource"
     }
 }
