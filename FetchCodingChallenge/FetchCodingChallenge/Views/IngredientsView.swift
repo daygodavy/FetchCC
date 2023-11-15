@@ -32,7 +32,10 @@ struct IngredientsView: View {
             }
             .listRowBackground(BgColor.brown5)
         }
-        .scrollContentBackground(.hidden)
+        .listStyle(.plain)
         .background(BgColor.brown10)
+        .padding(.horizontal, 30)
+        .padding(.top, 5)
+        .padding(.bottom, 25)
     }
 }

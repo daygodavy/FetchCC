@@ -38,15 +38,30 @@ enum SystemImage {
 
 /// Fonts for MealListView
 enum ListFont {
-    static let listTitle = Font.system(.title, design: .monospaced, weight: .bold)
-    static let mealTitle = Font.system(.subheadline, design: .rounded, weight: .semibold)
+    static let listTitle = Font.system(size: UIFont.preferredFont(forTextStyle: .title1).pointSize, weight: .bold)
+    static let mealTitle = Font.system(size: UIFont.preferredFont(forTextStyle: .subheadline).pointSize, weight: .semibold)
 }
+
+
+//enum ListFont {
+//    static let listTitle = Font.system(.title, design: .monospaced, weight: .bold)
+//    static let mealTitle = Font.system(.subheadline, design: .rounded, weight: .semibold)
+//}
 
 /// Fonts for MealDetailView
 enum DetailFont {
-    static let dessertTitle = Font.system(.title, design: .rounded, weight: .heavy)
-    static let selectedButton = Font.system(.title2, design: .default, weight: .semibold)
-    static let unselectedButton = Font.system(.title2, design: .default, weight: .medium)
-    static let instructions = Font.system(.title3, design: .default, weight: .medium)
-    static let bulletList = Font.system(.subheadline, design: .default, weight: .medium)
+    static let dessertTitle = Font.system(size: UIFont.preferredFont(forTextStyle: .title1).pointSize, weight: .heavy)
+    static let selectedButton = Font.system(size: UIFont.preferredFont(forTextStyle: .title2).pointSize, weight: .semibold)
+    static let unselectedButton = Font.system(size: UIFont.preferredFont(forTextStyle: .title2).pointSize, weight: .medium)
+    static let instructions = Font.system(size: UIFont.preferredFont(forTextStyle: .title3).pointSize, weight: .medium)
+    static let bulletList = Font.system(size: UIFont.preferredFont(forTextStyle: .subheadline).pointSize, weight: .medium)
 }
+
+
+//enum DetailFont {
+//    static let dessertTitle = Font.system(.title, design: .rounded, weight: .heavy)
+//    static let selectedButton = Font.system(.title2, design: .default, weight: .semibold)
+//    static let unselectedButton = Font.system(.title2, design: .default, weight: .medium)
+//    static let instructions = Font.system(.title3, design: .default, weight: .medium)
+//    static let bulletList = Font.system(.subheadline, design: .default, weight: .medium)
+//}
