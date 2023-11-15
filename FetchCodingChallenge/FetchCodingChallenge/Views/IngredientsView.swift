@@ -7,10 +7,18 @@
 
 import SwiftUI
 
+/*
+ IngredientsView is a list view used in the MealDetailView
+ that shows all the ingredients and corresponding measurements
+ for a dessert item in a bullet point list fashion
+ */
 struct IngredientsView: View {
+    
+    // MARK: - Variables
     let items: [String]
     let measures: [String]
 
+    // MARK: - Main Body
     var body: some View {
         List(0..<items.count, id: \.self) { index in
             HStack {
@@ -18,9 +26,7 @@ struct IngredientsView: View {
                     .foregroundColor(.secondary)
                 Text(items[index])
                     .font(DetailFont.bulletList)
-                
                 Spacer()
-
                 Text(measures[index])
                     .font(DetailFont.bulletList)
             }
@@ -30,7 +36,3 @@ struct IngredientsView: View {
         .background(BgColor.brown10)
     }
 }
-
-//#Preview {
-//    BulletPointListView()
-//}

@@ -7,17 +7,19 @@
 
 import SwiftUI
 
-enum ButtonType {
-    case ingredients
-    case instructions
-}
-
+/*
+ MealDetailView shows the recipe for the dessert item that was
+ selected from the MealListView
+ */
 struct MealDetailView: View {
+    
+    // MARK: - Variables
     @ObservedObject var viewModel: MealDetailViewModel
     @State private var selectedButton: ButtonType = .ingredients
     let headerHeight: CGFloat = ScreenSize.height * 0.46
     let detailHeight: CGFloat = ScreenSize.height * 0.58
     
+    // MARK: - Main Body
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
@@ -33,7 +35,12 @@ struct MealDetailView: View {
             }
         }
         .ignoresSafeArea()
+        .errorAlert(error: $viewModel.error)
     }
+}
+
+// MARK: - Subviews
+extension MealDetailView {
     
     var titleView: some View {
         return HStack(alignment: .top) {
@@ -47,12 +54,14 @@ struct MealDetailView: View {
                 .background(BgColor.brown45)
     }
     
+    /// Container that holds the title, buttons and recipe details
     var detailContainerView: some View {
         return ZStack {
             VStack {
                 titleView
                 VStack(alignment: .leading) {
-                    ButtonPickerView(selectedButton: $selectedButton, detailHeight: detailHeight)
+                    ButtonPickerView(selectedButton: $selectedButton, 
+                                     detailHeight: detailHeight)
                     getSelectedView()
                         .frame(maxWidth: .infinity, maxHeight: detailHeight)
                 }
@@ -63,16 +72,22 @@ struct MealDetailView: View {
         .background(BgColor.brown45)
         .clipShape(.rect(cornerRadius: 20))
     }
+}
+
+// MARK: - Helper Methods
+extension MealDetailView {
     
+    /// Retrieves the appropriate view that corresponds to the selected button
     func getSelectedView() -> AnyView {
         switch selectedButton {
         case .ingredients:
-            return AnyView(IngredientsView(items: viewModel.getIngredients(), measures: viewModel.getMeasurements()))
+            return AnyView(IngredientsView(items: viewModel.getIngredients(), 
+                                           measures: viewModel.getMeasurements()))
         case .instructions:
-            return AnyView(InstructionsView(instructions: viewModel.getInstructions(), height: detailHeight * 0.70))
+            return AnyView(InstructionsView(instructions: viewModel.getInstructions(), 
+                                            height: detailHeight * 0.70))
         }
     }
-    
 }
 
 #Preview {

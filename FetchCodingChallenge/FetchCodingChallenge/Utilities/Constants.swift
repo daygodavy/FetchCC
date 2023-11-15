@@ -7,16 +7,13 @@
 
 import SwiftUI
 
+/// Dimensions for screen size of device
 enum ScreenSize {
     static let width = UIScreen.main.bounds.width
     static let height = UIScreen.main.bounds.height
 }
 
-enum UISize {
-    static let cornerRad = 10
-    static let padding: CGFloat = 15
-}
-
+/// Custom background colors
 enum BgColor {
     static let brown5: some View = Color.brown.brightness(-0.05)
     static let brown10: some View = Color.brown.brightness(-0.10)
@@ -26,7 +23,7 @@ enum BgColor {
     static let brown50: some View = Color.brown.brightness(-0.50)
     static let clearBlack5 = Color.black.opacity(0.05)
     static let clearBlack20 = Color.black.opacity(0.20)
-    static let clearBlack90 = Color.black.opacity(0.9)
+    static let clearBlack95 = Color.black.opacity(0.95)
 }
 
 enum LabelText {
@@ -39,11 +36,13 @@ enum SystemImage {
     static let circleFill = Image(systemName: "circle.fill")
 }
 
+/// Fonts for MealListView
 enum ListFont {
     static let listTitle = Font.system(.title, design: .monospaced, weight: .bold)
     static let mealTitle = Font.system(.subheadline, design: .rounded, weight: .semibold)
 }
 
+/// Fonts for MealDetailView
 enum DetailFont {
     static let dessertTitle = Font.system(.title, design: .rounded, weight: .heavy)
     static let selectedButton = Font.system(.title2, design: .default, weight: .semibold)

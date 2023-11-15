@@ -23,6 +23,8 @@
 		5B33FFC02B040E02003E6219 /* IngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33FFBF2B040E02003E6219 /* IngredientsView.swift */; };
 		5B33FFC22B0412EC003E6219 /* ButtonPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33FFC12B0412EC003E6219 /* ButtonPickerView.swift */; };
 		5B33FFC42B0417A7003E6219 /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33FFC32B0417A7003E6219 /* InstructionsView.swift */; };
+		5B33FFC92B042C54003E6219 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33FFC82B042C54003E6219 /* View+Ext.swift */; };
+		5B33FFCB2B04364F003E6219 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33FFCA2B04364F003E6219 /* ErrorHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		5B33FFBF2B040E02003E6219 /* IngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsView.swift; sourceTree = "<group>"; };
 		5B33FFC12B0412EC003E6219 /* ButtonPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPickerView.swift; sourceTree = "<group>"; };
 		5B33FFC32B0417A7003E6219 /* InstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsView.swift; sourceTree = "<group>"; };
+		5B33FFC82B042C54003E6219 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
+		5B33FFCA2B04364F003E6219 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				5B33FF8E2AFDB711003E6219 /* FetchCodingChallengeApp.swift */,
+				5B33FFC72B042C41003E6219 /* Extensions */,
 				5B33FFAF2B02C459003E6219 /* Utilities */,
 				5B33FFA02AFDE0BA003E6219 /* Services */,
 				5B33FFAA2AFEF4BE003E6219 /* Views */,
@@ -138,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				5B33FFB02B02C469003E6219 /* Constants.swift */,
+				5B33FFCA2B04364F003E6219 /* ErrorHandler.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -149,6 +155,14 @@
 				5B33FFAD2B016B43003E6219 /* MealDetailView.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		5B33FFC72B042C41003E6219 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5B33FFC82B042C54003E6219 /* View+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,8 +237,10 @@
 			files = (
 				5B33FF9F2AFDD5F4003E6219 /* Meal.swift in Sources */,
 				5B33FFA72AFEB804003E6219 /* NetworkManager.swift in Sources */,
+				5B33FFC92B042C54003E6219 /* View+Ext.swift in Sources */,
 				5B33FFB92B02EA5D003E6219 /* MealDbRepo.swift in Sources */,
 				5B33FF8F2AFDB711003E6219 /* FetchCodingChallengeApp.swift in Sources */,
+				5B33FFCB2B04364F003E6219 /* ErrorHandler.swift in Sources */,
 				5B33FFBD2B040AA2003E6219 /* MealImageView.swift in Sources */,
 				5B33FFA52AFEB66B003E6219 /* MealListViewModel.swift in Sources */,
 				5B33FFAE2B016B43003E6219 /* MealDetailView.swift in Sources */,

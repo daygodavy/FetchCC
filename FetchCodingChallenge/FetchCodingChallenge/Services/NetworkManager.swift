@@ -9,17 +9,15 @@
 import Foundation
 import Combine
 
-enum NetworkError: Error {
-    case invalidURL
-    case noData
-    case invalidResponse
-    case decodingError
-}
-
+/*
+ NetworkManager handles network calls and decoding JSON responses
+ */
 class NetworkManager {
     
-    private let baseURL = "https://themealdb.com/api/json/v1/1/"
+    // MARK: - Variables
+    let decoder = JSONDecoder()
     
+    // MARK: - Methods
     func fetchData<T: Decodable>(from endpoint: String, modelType: T.Type) -> AnyPublisher<T, Error> {
         guard let url = URL(string: endpoint) else {
             return Fail(error: NetworkError.invalidURL).eraseToAnyPublisher()
@@ -29,13 +27,13 @@ class NetworkManager {
             .tryMap { data, response in
                 
                 guard let httpResponse = response as? HTTPURLResponse,
-                      (200...299).contains(httpResponse.statusCode)
+                      httpResponse.statusCode == 200
                 else { throw NetworkError.invalidResponse }
                 
                 do {
-                    return try JSONDecoder().decode(T.self, from: data)
+                    return try self.decoder.decode(T.self, from: data)
                 } catch {
-                    throw NetworkError.decodingError
+                    throw NetworkError.invalidData
                 }
             }
             .receive(on: DispatchQueue.main)

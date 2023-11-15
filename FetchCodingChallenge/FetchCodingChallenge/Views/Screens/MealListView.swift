@@ -7,11 +7,18 @@
 
 import SwiftUI
 
+/*
+ MealListView is the initial view that shows all the dessert
+ items; image and name, in a scrollable collection view
+ */
 struct MealListView: View {
+    
+    // MARK: - Variables
     @ObservedObject var viewModel: MealListViewModel
     private let rowHeight: CGFloat = ScreenSize.width * 0.50
     private let cellWidth: CGFloat = ScreenSize.width * 0.45
     
+    // MARK: - Main Body
     var body: some View {
         ZStack {
             BgColor.brown40
@@ -21,7 +28,12 @@ struct MealListView: View {
             }
         }
         .ignoresSafeArea()
+        .errorAlert(error: $viewModel.error)
     }
+}
+
+// MARK: - Subviews
+extension MealListView {
     
     private var headerView: some View {
         return VStack {
@@ -37,6 +49,7 @@ struct MealListView: View {
         .frame(maxWidth: .infinity, maxHeight: rowHeight * 0.50)
     }
     
+    /// Collections view that displays MealItemCells in 2 columns by X rows
     private var collectionView: some View {
         return VStack(alignment: .leading, spacing: 10) {
             ForEach(0..<viewModel.getMealCount(), id: \.self) { index in
@@ -49,7 +62,12 @@ struct MealListView: View {
         }
         .padding()
     }
+}
+
+// MARK: - Helper Methods
+extension MealListView {
     
+    /// Creates a 2 column row of MealItemCells
     private func createRow(at index: Int) -> some View {
         return HStack {
             ForEach(0..<2) { colIndex in
@@ -64,7 +82,6 @@ struct MealListView: View {
         }
     }
 }
-
 
 #Preview {
     MealListView(viewModel: MealListViewModel())
